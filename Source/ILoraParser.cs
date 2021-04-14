@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using RaaLabs.Edge.Connectors.Lora.Model;
 
 namespace RaaLabs.Edge.Connectors.Lora
 {
@@ -39,7 +40,7 @@ namespace RaaLabs.Edge.Connectors.Lora
         /// </summary>
         /// <param name="payload"></param>
         /// <returns></returns>
-        long GetTimestampFor(JObject payload);
+        long GetTimestampFor(LoraMessage payload);
 
         /// <summary>
         /// Parse a parseable payload into its target object
