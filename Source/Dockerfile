@@ -14,7 +14,6 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/runtime:5.0-buster-slim
 WORKDIR /app
 COPY --from=build-env /app/Source/out ./
-COPY --from=build-env /app/Source/data ./data
 
 RUN useradd -ms /bin/bash moduleuser
 USER moduleuser
