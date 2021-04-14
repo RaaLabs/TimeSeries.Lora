@@ -26,6 +26,7 @@ namespace RaaLabs.Edge.Connectors.Lora
                 .WithModule<Configuration>()
                 .WithTask<Connector>()
                 .WithHandler<ParserHandler>()
+                .WithType<LoraParser>()
                 .Build();
 
             await application.Run();
