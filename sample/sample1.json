@@ -1,0 +1,54 @@
+{
+    "end_device_ids" : {
+      "device_id" : "browan-industrial-tracker-434b",
+      "application_ids" : {
+        "application_id" : "browan-industrial-tracker"
+      },
+      "dev_eui" : "E8E1E1000101434B",
+      "join_eui" : "E8E1E1000101363E",
+      "dev_addr" : "0007CEF8"
+    },
+    "correlation_ids" : [ "as:up:01EJDJE04ZJ7WY6GBM0EC5N3KF", "gs:conn:01EJ650FAYM5YGCQ00EDNP2WW5", "gs:uplink:01EJDJDZYJ393M4GN1Z2BVC3T9", "ns:uplink:01EJDJDZYJ90ZMB01FR37ZSGCD", "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01EJDJDZYJ3WSXA5E1DA5PWS4J" ],
+    "received_at" : "2020-09-17T08:20:58.655162656Z",
+    "uplink_message" : {
+      "session_key_id" : "AXSWj9cEyySFAZTfmrm2jg==",
+      "f_port" : 136,
+      "f_cnt" : 93,
+      "frm_payload" : "DPs8AAAAAAAAAAA=",
+      "decoded_payload" : {
+        "bat_percentage" : 100,
+        "battery_value" : 3.6,
+        "latitude" : 0,
+        "longitude" : 0,
+        "status" : 12,
+        "temperature" : 28
+      },
+      "rx_metadata" : [ {
+        "gateway_ids" : {
+          "gateway_id" : "mikrotik-office",
+          "eui" : "313330374E006200"
+        },
+        "time" : "2020-09-17T08:20:58.183116Z",
+        "timestamp" : 4148624932,
+        "rssi" : -108,
+        "channel_rssi" : -108,
+        "snr" : 4.5,
+        "uplink_token" : "Ch0KGwoPbWlrcm90aWstb2ZmaWNlEggxMzA3TgBiABCk/Ju6Dw==",
+        "channel_index" : 6
+      } ],
+      "settings" : {
+        "data_rate" : {
+          "lora" : {
+            "bandwidth" : 125000,
+            "spreading_factor" : 7
+          }
+        },
+        "data_rate_index" : 5,
+        "coding_rate" : "4/5",
+        "frequency" : "867700000",
+        "timestamp" : 4148624932,
+        "time" : "2020-09-17T08:20:58.183116Z"
+      },
+      "received_at" : "2020-09-17T08:20:58.450863704Z"
+    }
+  }

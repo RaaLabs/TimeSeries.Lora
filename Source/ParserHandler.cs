@@ -8,6 +8,9 @@ using Serilog;
 using RaaLabs.Edge.Connectors.Lora.Events;
 using RaaLabs.Edge.Modules.EventHandling;
 using Newtonsoft.Json.Linq;
+using System.Text;
+using RaaLabs.Edge.Connectors.Lora.Model;
+using Newtonsoft.Json;
 
 namespace RaaLabs.Edge.Connectors.Lora
 {
@@ -17,7 +20,6 @@ namespace RaaLabs.Edge.Connectors.Lora
     public class ParserHandler : IConsumeEvent<Events.MqttEventReceived>, IProduceEvent<Events.LoraDatapointOutput>
     {
         public event EventEmitter<Events.LoraDatapointOutput> SendDataPoint;
-
         readonly ILogger _logger;
         readonly ILoraParser _parser;
 
@@ -38,8 +40,12 @@ namespace RaaLabs.Edge.Connectors.Lora
         {
             try
             {
-                JObject payload = JObject.Parse(System.Text.Encoding.UTF8.GetString(@event.Payload));
+                //JObject payload = JObject.Parse(System.Text.Encoding.UTF8.GetString(@event.Payload));
+                var stringPayload = Encoding.UTF8.GetString(@event.Payload);
+                var payload = JsonConvert.DeserializeObject<LoraMessage>(stringPayload);
+            
                 // TODO
+                
                 var timestamp = _parser.GetTimestampFor(payload);
 
                 var outputDatapoint = new LoraDatapointOutput

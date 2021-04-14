@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using RaaLabs.Edge.Connectors.Lora.Model;
 
 namespace RaaLabs.Edge.Connectors.Lora
 {
@@ -34,9 +35,9 @@ namespace RaaLabs.Edge.Connectors.Lora
         }
 
         /// <inheritdoc/>
-        public long GetTimestampFor(JObject payload)
+        public long GetTimestampFor(LoraMessage message)
         {
-            string time = (string)payload["received_at"];
+            string time = message.UplinkMessage.ReceivedAt;
             long epochTimestamp = DateTimeOffset.Parse(time).ToUnixTimeMilliseconds();
             return epochTimestamp;
         }
