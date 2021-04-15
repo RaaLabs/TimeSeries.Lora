@@ -10,6 +10,6 @@ namespace RaaLabs.Edge.Connectors.Lora.Model
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public class ApplicationIds
     {
-        string ApplicationId { get; set; }
+        public string ApplicationId { get; set; }
     }
 }

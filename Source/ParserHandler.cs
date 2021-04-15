@@ -23,7 +23,6 @@ namespace RaaLabs.Edge.Connectors.Lora
         readonly ILogger _logger;
         readonly ILoraParser _parser;
 
-
         /// <summary>
         /// Initializes a new instance of <see cref="ILogger"/>
         /// </summary>
@@ -45,17 +44,21 @@ namespace RaaLabs.Edge.Connectors.Lora
                 var payload = JsonConvert.DeserializeObject<LoraMessage>(stringPayload);
             
                 // TODO
-                
+                var decodedPayload = _parser.GetDecodedPayloadFor(payload);
                 var timestamp = _parser.GetTimestampFor(payload);
+                var devEui = _parser.GetDeviceIdFor(payload);
 
-                var outputDatapoint = new LoraDatapointOutput
+                foreach (var dataPoint in decodedPayload)
                 {
-                    source = "Lora",
-                    tag = "tag-name", //tagname
-                    timestamp = timestamp,
-                    value = 123.12
-                };
-                SendDataPoint(outputDatapoint);
+                    var outputDatapoint = new LoraDatapointOutput
+                    {
+                        source = "Lora",
+                        tag = devEui + "/" + dataPoint.Key,
+                        timestamp = timestamp,
+                        value = dataPoint.Value
+                    };
+                    SendDataPoint(outputDatapoint);
+                }
             }
             catch (Exception ex)
             {

@@ -19,21 +19,21 @@ namespace RaaLabs.Edge.Connectors.Lora
         /// </summary>
         /// <param name="payload">payload to check</param>
         /// <returns>True if it can be parsed, false if not</returns>
-        bool CanParse(JObject payload);
+        bool CanParse(LoraMessage payload);
 
         /// <summary>
         /// Get the unique payload identifier for the payload
         /// </summary>
         /// <param name="payload">The payload to get for</param>
         /// <returns>Unique identifier for the payload</returns>
-        string GetApplicationIdFor(JObject payload);
+        string GetApplicationIdFor(LoraMessage payload);
 
         /// <summary>
         /// Get the device identifier for the payload
         /// </summary>
         /// <param name="payload">The payload to get for</param>
         /// <returns>Unique identifier for the payload</returns>
-        string GetDeviceIdFor(JObject payload);
+        string GetDeviceIdFor(LoraMessage payload);
         
         /// <summary>
         /// 
@@ -47,7 +47,7 @@ namespace RaaLabs.Edge.Connectors.Lora
         /// </summary>
         /// <param name="payload">payload to parse</param>
         /// <returns>All the results parsed</returns>
-        JToken GetDecodedPayloadFor(JObject payload);
+        Dictionary<string,dynamic> GetDecodedPayloadFor(LoraMessage payload);
 
     }
 }

@@ -17,38 +17,47 @@ namespace RaaLabs.Edge.Connectors.Lora
     {
         
         /// <inheritdoc/>
-        public bool CanParse(JObject payload)
+        public bool CanParse(LoraMessage message)
         {
             // TODO
             return true;
         }
 
         /// <inheritdoc/>
-        public string GetApplicationIdFor(JObject payload)
+        public string GetApplicationIdFor(LoraMessage message)
         {
-            return (string)payload["end_device_ids"]["application_ids"]["application_id"];
+            return message.EndDeviceIds.ApplicationIds.ApplicationId;
         }
         /// <inheritdoc/>
-        public string GetDeviceIdFor(JObject payload)
+        public string GetDeviceIdFor(LoraMessage message)
         {
-            return (string)payload["end_device_ids"]["device_id"];
+            return message.EndDeviceIds.DevEui;
+            //return (string)message["end_device_ids"]["device_id"];
         }
 
         /// <inheritdoc/>
-        public long GetTimestampFor(LoraMessage message)
+        public long GetTimestampFor(LoraMessage message) 
         {
             string time = message.UplinkMessage.ReceivedAt;
             long epochTimestamp = DateTimeOffset.Parse(time).ToUnixTimeMilliseconds();
             return epochTimestamp;
+            
         }
 
         /// <inheritdoc/>
-        public JToken GetDecodedPayloadFor(JObject payload)
+        public Dictionary<string, dynamic> GetDecodedPayloadFor(LoraMessage message)
         {
             // TODO
-            var encodedPayload = payload["uplink_message"]["decoded_payload"];
-            return encodedPayload;
+            
+            return message.UplinkMessage.DecodedPayload;
+        
         }
+        public string GetRawPayload(LoraMessage message)
+        {
+            return message.UplinkMessage.FrmPayload;
+        }
+
+        
 
     }
 }
