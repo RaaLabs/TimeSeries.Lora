@@ -3,6 +3,7 @@
 
 
 using System;
+using System.Text;
 using System.Threading.Tasks;
 using MQTTnet;
 using MQTTnet.Client;

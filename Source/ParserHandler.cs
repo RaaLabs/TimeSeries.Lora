@@ -42,27 +42,35 @@ namespace RaaLabs.Edge.Connectors.Lora
                 //JObject payload = JObject.Parse(System.Text.Encoding.UTF8.GetString(@event.Payload));
                 var stringPayload = Encoding.UTF8.GetString(@event.Payload);
                 var payload = JsonConvert.DeserializeObject<LoraMessage>(stringPayload);
-            
-                // TODO
-                var decodedPayload = _parser.GetDecodedPayloadFor(payload);
-                var timestamp = _parser.GetTimestampFor(payload);
-                var devEui = _parser.GetDeviceIdFor(payload);
 
-                foreach (var dataPoint in decodedPayload)
+
+
+                if (_parser.CanParse(payload))
                 {
-                    var outputDatapoint = new LoraDatapointOutput
+
+
+
+                    var decodedPayload = _parser.GetDecodedPayloadFor(payload);
+                    var timestamp = _parser.GetTimestampFor(payload);
+                    var devEui = _parser.GetDeviceIdFor(payload);
+
+                    foreach (var dataPoint in decodedPayload)
                     {
-                        source = "Lora",
-                        tag = devEui + "/" + dataPoint.Key,
-                        timestamp = timestamp,
-                        value = dataPoint.Value
-                    };
-                    SendDataPoint(outputDatapoint);
+                        var outputDatapoint = new LoraDatapointOutput
+                        {
+                            source = "Lora",
+                            tag = devEui + "/" + dataPoint.Key,
+                            timestamp = timestamp,
+                            value = dataPoint.Value
+                        };
+                        SendDataPoint(outputDatapoint);
+                    }
                 }
+
             }
             catch (Exception ex)
             {
-                _logger.Error(ex, "Error while parsing payload");
+                _logger.Warning(ex, "Error while parsing payload");
             }
         }
     }

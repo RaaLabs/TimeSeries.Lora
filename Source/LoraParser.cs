@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using RaaLabs.Edge.Connectors.Lora.Model;
+using Serilog;
 
 namespace RaaLabs.Edge.Connectors.Lora
 {
@@ -15,13 +16,24 @@ namespace RaaLabs.Edge.Connectors.Lora
     /// </summary>
     public class LoraParser : ILoraParser
     {
-        
+        private readonly ILogger _logger;
+
+        public LoraParser(ILogger logger)
+        {
+            _logger = logger;
+        }
+
         /// <inheritdoc/>
         public bool CanParse(LoraMessage message)
         {
-            // TODO
-            return true;
+            var validPayload = message.UplinkMessage.DecodedPayload != null ? true : false;
+            if (!validPayload)
+            {
+                throw new MissingDecodedPayloadException(message.EndDeviceIds.DevEui);
+            }
+            return validPayload;
         }
+        
 
         /// <inheritdoc/>
         public string GetApplicationIdFor(LoraMessage message)
