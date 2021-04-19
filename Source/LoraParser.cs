@@ -24,52 +24,36 @@ namespace RaaLabs.Edge.Connectors.Lora
         }
 
         /// <inheritdoc/>
-        public bool CanParse(LoraMessage message)
+        public bool CanParse(LoraMessage payload)
         {
-            var validPayload = message.UplinkMessage.DecodedPayload != null ? true : false;
+            var validPayload = payload.UplinkMessage.DecodedPayload != null;
             if (!validPayload)
             {
-                throw new MissingDecodedPayloadException(message.EndDeviceIds.DevEui);
+                var devEui = GetDeviceIdFor(payload);
+                _logger.Warning($"'{devEui}': does not contain decoded payload");
             }
             return validPayload;
         }
-        
+
 
         /// <inheritdoc/>
-        public string GetApplicationIdFor(LoraMessage message)
-        {
-            return message.EndDeviceIds.ApplicationIds.ApplicationId;
-        }
+        public string GetApplicationIdFor(LoraMessage payload) => payload.EndDeviceIds.ApplicationIds.ApplicationId;
         /// <inheritdoc/>
-        public string GetDeviceIdFor(LoraMessage message)
-        {
-            return message.EndDeviceIds.DevEui;
-            //return (string)message["end_device_ids"]["device_id"];
-        }
+        public string GetDeviceIdFor(LoraMessage payload) => payload.EndDeviceIds.DevEui;
 
         /// <inheritdoc/>
-        public long GetTimestampFor(LoraMessage message) 
+        public long GetTimestampFor(LoraMessage payload) 
         {
-            string time = message.UplinkMessage.ReceivedAt;
+            string time = payload.UplinkMessage.ReceivedAt;
             long epochTimestamp = DateTimeOffset.Parse(time).ToUnixTimeMilliseconds();
             return epochTimestamp;
             
         }
 
         /// <inheritdoc/>
-        public Dictionary<string, dynamic> GetDecodedPayloadFor(LoraMessage message)
-        {
-            // TODO
-            
-            return message.UplinkMessage.DecodedPayload;
-        
-        }
-        public string GetRawPayload(LoraMessage message)
-        {
-            return message.UplinkMessage.FrmPayload;
-        }
+        public Dictionary<string, dynamic> GetDecodedPayloadFor(LoraMessage payload) => payload.UplinkMessage.DecodedPayload;
 
-        
+
 
     }
 }

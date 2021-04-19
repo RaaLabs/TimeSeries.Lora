@@ -39,17 +39,11 @@ namespace RaaLabs.Edge.Connectors.Lora
         {
             try
             {
-                //JObject payload = JObject.Parse(System.Text.Encoding.UTF8.GetString(@event.Payload));
                 var stringPayload = Encoding.UTF8.GetString(@event.Payload);
                 var payload = JsonConvert.DeserializeObject<LoraMessage>(stringPayload);
 
-
-
                 if (_parser.CanParse(payload))
                 {
-
-
-
                     var decodedPayload = _parser.GetDecodedPayloadFor(payload);
                     var timestamp = _parser.GetTimestampFor(payload);
                     var devEui = _parser.GetDeviceIdFor(payload);
@@ -66,7 +60,6 @@ namespace RaaLabs.Edge.Connectors.Lora
                         SendDataPoint(outputDatapoint);
                     }
                 }
-
             }
             catch (Exception ex)
             {
