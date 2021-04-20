@@ -63,7 +63,7 @@ namespace RaaLabs.Edge.Connectors.Lora
             }
             catch (Exception ex)
             {
-                _logger.Warning(ex, "Error while parsing payload");
+                _logger.Error(ex, "Error while parsing payload");
             }
         }
     }

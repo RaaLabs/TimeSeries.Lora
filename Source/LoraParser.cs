@@ -30,7 +30,7 @@ namespace RaaLabs.Edge.Connectors.Lora
             if (!validPayload)
             {
                 var devEui = GetDeviceIdFor(payload);
-                _logger.Warning($"'{devEui}': does not contain decoded payload");
+                _logger.Error($"'{devEui}': does not contain decoded payload");
             }
             return validPayload;
         }
