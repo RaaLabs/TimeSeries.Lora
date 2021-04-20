@@ -1,10 +1,10 @@
-# TimeSeries.Lora
+# Connector.Lora
 
 This document describes the Connectors.Lora module for RaaLabs Edge.
 
 ## What does it do?
 
-Connector.Lora receives MQTT topics from the TTI stack. The payloads are of JSON type where the body contains a raw data string on HEX format (`frm_payload`) and a decoded payload on human readable format (`decoded_payload`). In short, relevant attributes in the payload are
+Connector.Lora receives MQTT topics from the TTI stack on a serialized JSON format. Deserialized payloads contains a raw data string on HEX format (`frm_payload`) and a decoded payload on human readable format (`decoded_payload`). In short, relevant attributes in the payload are
 
 ```json
 {
