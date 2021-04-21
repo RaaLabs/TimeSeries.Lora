@@ -7,7 +7,7 @@ using Newtonsoft.Json.Serialization;
 namespace RaaLabs.Edge.Connectors.Lora.Model
 {
     /// <summary>
-    /// Define applicationId as class 
+    /// Define application id
     /// </summary>
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public class ApplicationIds

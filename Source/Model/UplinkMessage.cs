@@ -8,7 +8,7 @@ using Newtonsoft.Json.Serialization;
 namespace RaaLabs.Edge.Connectors.Lora.Model
 {
     /// <summary>
-    /// Define payload message/uplink message as class 
+    /// Define payload message/uplink message
     /// </summary>
 
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]

@@ -7,7 +7,7 @@ using Newtonsoft.Json.Serialization;
 namespace RaaLabs.Edge.Connectors.Lora.Model
 {
     /// <summary>
-    /// Define relevant device ids as class with properies 
+    /// Define relevant device ids
     /// </summary>
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public class EndDeviceIds

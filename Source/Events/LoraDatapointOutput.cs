@@ -8,7 +8,6 @@ namespace RaaLabs.Edge.Connectors.Lora.Events
     [OutputName("output")]
     public class LoraDatapointOutput : IEdgeHubOutgoingEvent
     {
-
         public string source { get; set; }
 
         public string tag { get; set; }

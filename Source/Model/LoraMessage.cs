@@ -7,7 +7,7 @@ using Newtonsoft.Json.Serialization;
 namespace RaaLabs.Edge.Connectors.Lora.Model
 {
     /// <summary>
-    /// Define Loramessage as class 
+    /// Defines Lora message 
     /// </summary>
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public class LoraMessage

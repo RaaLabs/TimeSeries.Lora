@@ -3,8 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Newtonsoft.Json.Linq;
 using RaaLabs.Edge.Connectors.Lora.Model;
 using Serilog;
 
@@ -36,6 +34,7 @@ namespace RaaLabs.Edge.Connectors.Lora
 
         /// <inheritdoc/>
         public string GetApplicationIdFor(LoraMessage payload) => payload.EndDeviceIds.ApplicationIds.ApplicationId;
+
         /// <inheritdoc/>
         public string GetDeviceIdFor(LoraMessage payload) => payload.EndDeviceIds.DevEui;
 
