@@ -12,7 +12,13 @@ namespace RaaLabs.Edge.Connectors.Lora.Model
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public class LoraMessage
     {
-        public EndDeviceIds EndDeviceIds {get; set;}
-        public UplinkMessage UplinkMessage {get; set;}
+        /// <summary>
+        /// Define relevant device ids  
+        /// </summary>
+        public EndDeviceIds EndDeviceIds { get; set; }
+        /// <summary>
+        /// Define Uplink message
+        /// </summary>
+        public UplinkMessage UplinkMessage { get; set; }
     }
 }

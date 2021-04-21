@@ -24,6 +24,8 @@ namespace RaaLabs.Edge.Connectors.Lora.Model
         
         /// <summary> JoinEui is the unique ID of application server. This is the destintion of the messages sent by the device. </summary>
         public string JoinEui { get; set; }
+       
+        /// <summary> DevAddr is the non-unique address required for over-the-air activation</summary>
         public string DevAddr { get; set; }
 
     }

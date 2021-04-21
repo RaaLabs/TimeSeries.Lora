@@ -6,12 +6,13 @@ using Newtonsoft.Json.Serialization;
 
 namespace RaaLabs.Edge.Connectors.Lora.Model
 {
-    /// <summary>
-    /// Define application id
-    /// </summary>
+
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public class ApplicationIds
     {
+        /// <summary>
+        /// Define application id
+        /// </summary>
         public string ApplicationId { get; set; }
     }
 }
