@@ -1,8 +1,9 @@
+// Copyright (c) RaaLabs. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using RaaLabs.Edge.Connectors.Lora.Events;
 using TechTalk.SpecFlow;
 using FluentAssertions;
-using System.Globalization;
-
 
 namespace RaaLabs.Edge.Connectors.Lora.Specs.Drivers
 {

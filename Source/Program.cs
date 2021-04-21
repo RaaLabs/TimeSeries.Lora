@@ -7,7 +7,6 @@ using RaaLabs.Edge.Modules.EventHandling;
 using RaaLabs.Edge.Modules.EdgeHub;
 using RaaLabs.Edge.Modules.Configuration;
 
-
 namespace RaaLabs.Edge.Connectors.Lora
 {
     [ExcludeFromCodeCoverage]

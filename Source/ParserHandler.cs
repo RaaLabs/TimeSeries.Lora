@@ -2,12 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
-using System.IO;
-using System.IO.Compression;
 using Serilog;
 using RaaLabs.Edge.Connectors.Lora.Events;
 using RaaLabs.Edge.Modules.EventHandling;
-using Newtonsoft.Json.Linq;
 using System.Text;
 using RaaLabs.Edge.Connectors.Lora.Model;
 using Newtonsoft.Json;
@@ -63,7 +60,7 @@ namespace RaaLabs.Edge.Connectors.Lora
             }
             catch (Exception ex)
             {
-                _logger.Error(ex, "Error while parsing payload");
+                _logger.Warning(ex, "Error while parsing payload");
             }
         }
     }

@@ -1,25 +1,21 @@
 // Copyright (c) RaaLabs. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-
-using System;
-using System.Text;
 using System.Threading.Tasks;
 using MQTTnet;
-using MQTTnet.Client;
-using MQTTnet.Client.Options;
 using MQTTnet.Client.Receiving;
-using MQTTnet.Extensions.ManagedClient;
 using MQTTnet.Protocol;
 using MQTTnet.Server;
 using RaaLabs.Edge.Modules.EventHandling;
 using Serilog;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RaaLabs.Edge.Connectors.Lora
 {
     /// <summary>
     /// Represents an implementation for <see cref="IProduceEvent"/>
     /// </summary>
+    [ExcludeFromCodeCoverage] // Covered by integration tests
     public class Connector : IRunAsync, IProduceEvent<Events.MqttEventReceived>
     {
         /// <inheritdoc/>

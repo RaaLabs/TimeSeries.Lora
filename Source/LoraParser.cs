@@ -1,7 +1,6 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) RaaLabs. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+// Copyright (c) RaaLabs. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,11 +29,10 @@ namespace RaaLabs.Edge.Connectors.Lora
             if (!validPayload)
             {
                 var devEui = GetDeviceIdFor(payload);
-                _logger.Error($"'{devEui}': does not contain decoded payload");
+                _logger.Warning($"'{devEui}': does not contain decoded payload");
             }
             return validPayload;
         }
-
 
         /// <inheritdoc/>
         public string GetApplicationIdFor(LoraMessage payload) => payload.EndDeviceIds.ApplicationIds.ApplicationId;
@@ -46,14 +44,11 @@ namespace RaaLabs.Edge.Connectors.Lora
         {
             string time = payload.UplinkMessage.ReceivedAt;
             long epochTimestamp = DateTimeOffset.Parse(time).ToUnixTimeMilliseconds();
-            return epochTimestamp;
-            
+            return epochTimestamp; 
         }
 
         /// <inheritdoc/>
         public Dictionary<string, dynamic> GetDecodedPayloadFor(LoraMessage payload) => payload.UplinkMessage.DecodedPayload;
-
-
 
     }
 }
