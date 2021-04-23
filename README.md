@@ -1,4 +1,7 @@
 # Connector.Lora
+[![.NET 5.0](https://github.com/RaaLabs/Connectors.Lora/actions/workflows/dotnet-core.yml/badge.svg)](https://github.com/RaaLabs/Connectors.Lora/actions/workflows/dotnet-core.yml)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=RaaLabs_Connectors.Lora&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=RaaLabs_Connectors.Lora)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=RaaLabs_Connectors.Lora&metric=coverage)](https://sonarcloud.io/dashboard?id=RaaLabs_Connectors.Lora)
 
 This document describes the Connectors.Lora module for RaaLabs Edge.
 
