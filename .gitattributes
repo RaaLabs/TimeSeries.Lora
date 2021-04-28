@@ -1,2 +1,2 @@
 * linguist-vendored
-*.feature linguist-vendored=false
+*.cs linguist-vendored=false
