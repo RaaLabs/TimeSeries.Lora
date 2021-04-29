@@ -1,1 +1,9 @@
-Specifications/* linguist-vendored
+* text eol=lf
+
+**/*.cs text
+**/*.csproj text
+*.sln text
+**/*.md text
+**/*.sh text
+
+*.feature linguist-vendored
