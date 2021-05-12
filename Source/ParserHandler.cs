@@ -49,10 +49,10 @@ namespace RaaLabs.Edge.Connectors.Lora
                     {
                         var outputDatapoint = new LoraDatapointOutput
                         {
-                            source = "Lora",
-                            tag = devEui + "/" + dataPoint.Key,
-                            timestamp = timestamp,
-                            value = dataPoint.Value
+                            Source = "Lora",
+                            Tag = devEui + "/" + dataPoint.Key,
+                            Timestamp = timestamp,
+                            Value = dataPoint.Value
                         };
                         SendDataPoint(outputDatapoint);
                     }
