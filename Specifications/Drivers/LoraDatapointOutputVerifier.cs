@@ -5,16 +5,17 @@ using RaaLabs.Edge.Connectors.Lora.Events;
 using TechTalk.SpecFlow;
 using FluentAssertions;
 
+
 namespace RaaLabs.Edge.Connectors.Lora.Specs.Drivers
 {
     class LoraDatapointOutputVerifier : IProducedEventVerifier<LoraDatapointOutput>
     {
         public void VerifyFromTableRow(LoraDatapointOutput @event, TableRow row)
         { 
-            dynamic actualValue = @event.value;
+            dynamic actualValue = @event.Value;
             var expectedValue = ParseValue(row);
-            @event.source.Should().Be("Lora");
-            @event.tag.Should().Be(row["Tag"]);
+            @event.Source.Should().Be("Lora");
+            @event.Tag.Should().Be(row["Tag"]);
 
             if(expectedValue is double && actualValue is double)
             {
